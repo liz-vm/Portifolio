@@ -1,0 +1,457 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liz Vieira Mesquita | Portfólio</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts: Playfair Display (Serif) e Inter (Sans-serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================
+           1. VARIÁVEIS DE ESTILO E CORES (Anos 70 / Analógico)
+           ========================================== */
+        :root {
+            --bg-dark: #121414;
+            --bg-card: #1a1d1d;
+            --teal-primary: #148588;
+            --teal-glow: #20b2b6;
+            --text-light: #e5e9e9;
+            --text-muted: #e5e9e9;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        /* ==========================================
+           2. ESTILOS GERAIS E ANIMAÇÕES
+           ========================================== */
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: var(--font-sans);
+            overflow-x: hidden;
+            letter-spacing: -0.01em;
+            /* Efeito sutil de textura granulada analógica via CSS */
+            background-image: radial-gradient(rgba(255,255,255,0.02) 1px, transparent 0);
+            background-size: 4px 4px;
+        }
+
+        h1, h2, h3, h4, .font-serif {
+            font-family: var(--font-serif);
+            font-weight: 700;
+        }
+
+        a {
+            color: var(--teal-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: var(--teal-glow);
+        }
+
+        /* Animação suave de entrada */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animated-section {
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        /* ==========================================
+           3. NAVBAR PERSONALIZADA
+           ========================================== */
+        .navbar {
+            background-color: rgba(18, 20, 20, 0.95) !important;
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid rgba(20, 133, 136, 0.15);
+        }
+
+        .navbar-brand {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            font-style: italic;
+            color: var(--text-light) !important;
+            letter-spacing: 1px;
+        }
+
+        .nav-link {
+            color: var(--text-muted) !important;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--teal-glow) !important;
+        }
+
+        /* ==========================================
+           4. HOME PAGE (Mosaico Assimétrico)
+           ========================================== */
+        .hero-section {
+            padding-top: 120px;
+            padding-bottom: 80px;
+        }
+
+        .mosaic-container {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* Blocos do mosaico com alturas e alinhamentos diferentes (anos 70/editorial) */
+        .mosaic-card {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 0px; /* Estética editorial rígida */
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .mosaic-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(20, 133, 136, 0.4);
+        }
+
+        .mosaic-1 { min-height: 450px; }
+        .mosaic-2 { min-height: 380px; margin-top: 40px; }
+        .mosaic-3 { min-height: 420px; }
+
+        @media (max-width: 768px) {
+            .mosaic-2 { margin-top: 0; }
+        }
+
+        /* ==========================================
+           5. SEÇÃO SOBRE MIM
+           ========================================== */
+        .about-section {
+            padding: 100px 0;
+            background-color: #161919;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .about-image-placeholder {
+            background-color: #1e2222;
+            height: 450px;
+            width: 100%;
+            border: 1px solid rgba(20, 133, 136, 0.2);
+        }
+
+        /* ==========================================
+           6. SEÇÃO PROJETOS (Cards de Mídia)
+           ========================================== */
+        .project-section {
+            padding: 80px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 0;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--teal-primary);
+        }
+
+        /* Substitutos de Imagens Reais (Película Analógica) */
+        .media-placeholder {
+            background-color: #242929;
+            height: 240px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Detalhe que simula borda de filme/película antiga */
+        .media-placeholder::before {
+            content: '•••••••••••••••••••••';
+            position: absolute;
+            top: 5px;
+            letter-spacing: 8px;
+            color: rgba(255, 255, 255, 0.05);
+            font-size: 10px;
+        }
+
+        .badge-teal {
+            background-color: rgba(20, 133, 136, 0.2);
+            color: var(--teal-glow);
+            border: 1px solid var(--teal-primary);
+            border-radius: 0;
+            padding: 6px 12px;
+            font-weight: 400;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+        }
+
+        .btn-outline-teal {
+            color: var(--teal-glow);
+            border: 1px solid var(--teal-primary);
+            border-radius: 0;
+            padding: 10px 24px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-teal:hover {
+            background-color: var(--teal-primary);
+            color: var(--text-light);
+        }
+
+        /* ==========================================
+           7. SEÇÃO CONTATO & FOOTER
+           ========================================== */
+        .contact-section {
+            padding: 100px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">L.V.M</a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#home">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sobre">Sobre Me</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projetos">Projetos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HOME PAGE (MOSAICO ASSIMÉTRICO) -->
+    <section id="home" class="hero-section animated-section">
+        <div class="container">
+            <!-- Cabeçalho Editorial Minimalista -->
+            <div class="row mb-5">
+                <div class="col-lg-8">
+                    <span class="text-uppercase tracking-widest text-muted small d-block mb-2">// PORTFÓLIO DE CINEMA & FOTOGRAFIA</span>
+                    <h1 class="display-3 mb-3">Liz Vieira Mesquita</h1>
+                    <p class="lead text-muted font-serif italic" style="font-size: 1.5rem;">Cineasta, Fotógrafa e Diretora de Arte</p>
+                </div>
+            </div>
+
+            <!-- Mosaico Assimétrico de 3 Colunas -->
+            <div class="row g-4">
+                <!-- Coluna 1: Foco no Conceito/Sobre -->
+                <div class="col-md-4 mosaic-container">
+                    <div class="mosaic-card mosaic-1">
+                        <div>
+                            <span class="text-muted small d-block mb-3">01 / ESTÉTICA</span>
+                            <h3 class="mb-3">Estudante de Cinema e Audiovisual</h3>
+                            <p class="text-muted small">Pesquisa visual focada na textura do grão, na iluminação natural dramática e no ritmo contemplativo do cinema de autor.</p>
+                        </div>
+                        <div>
+                            <a href="#sobre" class="btn btn-outline-teal w-100">Trajetória</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna 2: Foco em Projetos -->
+                <div class="col-md-4 mosaic-container">
+                    <div class="mosaic-card mosaic-2">
+                        <div>
+                            <span class="text-muted small d-block mb-3">02 / TRABALHOS</span>
+                            <h3 class="mb-3">Narrativas Visuais</h3>
+                            <p class="text-muted small">Explore uma seleção de curtas-metragens, direções de arte e experimentos analógicos desenvolvidos recentemente.</p>
+                        </div>
+                        <div>
+                            <a href="#projetos" class="btn btn-outline-teal w-100">Ver Projetos</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna 3: Foco em Conectar/Contato -->
+                <div class="col-md-4 mosaic-container">
+                    <div class="mosaic-card mosaic-3">
+                        <div>
+                            <span class="text-muted small d-block mb-3">03 / CONEXÃO</span>
+                            <h3 class="mb-3">Vamos criar algo juntos?</h3>
+                            <p class="text-muted small">Disponível para colaborações em direções de fotografia, assistência de arte e produções independentes de audiovisual.</p>
+                        </div>
+                        <div>
+                            <a href="#contato" class="btn btn-outline-teal w-100">Entrar em Contato</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO SOBRE MIM -->
+    <section id="sobre" class="about-section">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-md-5">
+                    <!-- Espaço reservado para a foto do artista -->
+                    <div class="about-image-placeholder d-flex align-items-center justify-content-center">
+                        <span class="text-muted font-serif italic">Liz V. Mesquita</span>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <span class="text-uppercase text-muted small tracking-widest d-block mb-2">// BIOGRAFIA</span>
+                    <h2 class="display-5 mb-4">Sobre Mim</h2>
+                    <p class="lead text-light font-serif italic mb-4">
+                        Sou estudante de cinema e audiovisual, movida pela busca de capturar a densidade do tempo e das emoções através das lentes.
+                    </p>
+                    <p class="text-muted">
+                        Minha trajetória se constrói na intersecção entre a direção de arte e a fotografia analógica. Encontro minhas maiores inspirações na estética editorial dos anos 70, no cinema de autor granulado, em paletas cromáticas profundas e na organicidade imperfeita dos formatos físicos. Busco criar composições táteis onde o cenário e a luz contam histórias tanto quanto as personagens.
+                    </p>
+                    <div class="row mt-4 pt-3 border-top border-secondary">
+                        <div class="col-6">
+                            <h6 class="text-uppercase text-muted small">Atuação</h6>
+                            <p class="small">Direção de Arte / Direção de Fotografia</p>
+                        </div>
+                        <div class="col-6">
+                            <h6 class="text-uppercase text-muted small">Pesquisa</h6>
+                            <p class="small">Mídias Analógicas, Cinema de Fluxo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO PROJETOS (GRADE RESPONSIVA) -->
+    <section id="projetos" class="project-section">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-10">
+                    <h2 class="display-5">Projetos Selecionados</h2>
+                    <div style="width: 60px; height: 2px; background-color: var(--teal-primary); margin-top: 15px;"></div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <!-- Projeto 1 -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="card h-100">
+                        <div class="media-placeholder">
+                            <span class="text-muted font-serif italic small">Janela do Tempo — 2024</span>
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-between p-4">
+                            <div>
+                                <div class="mb-2">
+                                    <span class="badge badge-teal">Curta-metragem</span>
+                                </div>
+                                <h4 class="card-title my-2">Janela do Tempo</h4>
+                                <p class="card-text text-muted small">Um curta-metragem focado na nostalgia urbana, explorando texturas analógicas e uma paleta melancólica de fins de tarde na cidade.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto 2 -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="card h-100">
+                        <div class="media-placeholder">
+                            <span class="text-muted font-serif italic small">Fragmentos Silenciosos — 2023</span>
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-between p-4">
+                            <div>
+                                <div class="mb-2">
+                                    <span class="badge badge-teal">Fotografia</span>
+                                </div>
+                                <h4 class="card-title my-2">Fragmentos Silenciosos</h4>
+                                <p class="card-text text-muted small">Série fotográfica em película 35mm que investiga a relação entre arquitetura brutalista, sombras marcadas e a solidão humana.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto 3 -->
+                <div class="col-md-4 col-sm-12">
+                    <div class="card h-100">
+                        <div class="media-placeholder">
+                            <span class="text-muted font-serif italic small">Eco Quântico — 2024</span>
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-between p-4">
+                            <div>
+                                <div class="mb-2">
+                                    <span class="badge badge-teal">Vídeo Experimental</span>
+                                </div>
+                                <h4 class="card-title my-2">Eco Quântico</h4>
+                                <p class="card-text text-muted small">Exploração sensorial de áudio e vídeo distorcidos, inspirada em técnicas de re-fotografia de tela e estéticas de vídeo-arte setentistas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO CONTATO -->
+    <section id="contato" class="contact-section">
+        <div class="container text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <span class="text-uppercase text-muted small tracking-widest d-block mb-2">// CANAIS ABERTOS</span>
+                    <h2 class="display-5 mb-4">Vamos conversar?</h2>
+                    <p class="text-muted mb-5">Seja para propor um novo projeto cinematográfico, ensaio fotográfico ou apenas trocar referências sobre cinema e estética.</p>
+                    
+                    <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
+                        <a href="mailto:lizvieiramesquita@gmail.com" class="btn btn-outline-teal px-4 py-3">
+                            lizvieiramesquita@gmail.com
+                        </a>
+                        <a href="https://instagram.com/seuinstagram" target="_blank" class="btn btn-outline-teal px-4 py-3">
+                            @seuinstagram
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-0">&copy; 2026 Liz Vieira Mesquita. Todos os direitos reservados.</p>
+            <p class="text-muted mt-2" style="font-size: 0.7rem;">Estética Editorial & Analógica desenvolvida via Bootstrap 5.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle (necessário apenas para funcionamento do menu responsivo mobile) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
